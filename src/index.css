@@ -1,2 +1,60 @@
+/* 400, 700, 900 */
+@import url("https://fonts.cdnfonts.com/css/ruda");
+
 :root {
+  --color-b1: black;
+  --color-b2: #1a1a1a;
+  --color-b3: #353535;
+
+  --color-w1: white;
+  --color-w2: #e9e9e9;
+  --color-w3: #d5d5d5;
+
+  --color-link: #9ad3ff;
+  --color-link2: #33a5fc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  color: var(--color-w1);
+  background: var(--color-b1);
+
+  font-family: "Ruda", sans-serif;
+
+  & input {
+    border: none;
+  }
+
+  & button {
+    border: none;
+  }
+}
+
+/* Remove button */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+::-ms-reveal {
+  filter: invert(100%);
+}
+
+@media (prefers-color-scheme: light) {
+  html,
+  body {
+    color: var(--color-b1);
+    background: var(--color-w1);
+  }
+
+  ::-ms-reveal {
+    filter: invert(0%);
+  }
 }
