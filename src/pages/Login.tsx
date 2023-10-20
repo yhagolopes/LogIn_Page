@@ -2,37 +2,15 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { FaLongArrowAltLeft } from "react-icons/fa";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
-import {
-  CenterDiv,
-  Input,
-  Text,
-  SmallLink,
-  Back,
-  Credits,
-} from "../global-css";
+import { CenterDiv, Input, Text, SmallLink, IconLink } from "../global-css";
 
-const Container = styled.div`
-  position: relative;
-
-  width: 100%;
-  min-height: 100vh;
-`;
-
-const FormContainer = styled(CenterDiv)`
-  background: var(--color-b2);
-
+const Container = styled(CenterDiv)`
   width: 25rem;
   min-height: 10rem;
-  border-radius: 36px;
 
   padding: 0 1.8rem;
-
-  @media (prefers-color-scheme: light) {
-    background: var(--color-w2);
-  }
 `;
 
 const InputContainer = styled.div`
@@ -43,29 +21,9 @@ const Links = styled.div`
   width: 15rem;
 `;
 
-const SendButton = styled.button`
-  cursor: pointer;
-  background: none;
-  color: var(--color-w2);
-  height: 1em;
-
-  font-size: 1.8rem;
-
-  &:hover {
-    color: var(--color-w1);
-  }
-
-  &:active {
-    outline: 2px solid var(--color-w2);
-  }
-
-  @media (prefers-color-scheme: light) {
-    color: var(--color-b2);
-
-    &:active {
-      color: var(--color-b1);
-    }
-  }
+const Access = styled(IconLink)`
+  position: static;
+  font-size: 2rem;
 `;
 
 const Flex = styled.div`
@@ -99,73 +57,70 @@ export const Login = () => {
 
   return (
     <Container>
-      <Back to="#">
-        <FaLongArrowAltLeft />
-      </Back>
-      <FormContainer>
+      <InputContainer>
+        <Text>
+          Email or<br></br>Phone Number
+        </Text>
+        <Input
+          value={emailOrNumber}
+          onChange={(event) => {
+            const { value } = event.target;
+
+            if (value.length < emailLengths.max) {
+              setEmailOrNumber(value);
+            }
+          }}
+        />
+      </InputContainer>
+
+      <InputContainer>
+        <Text>Password</Text>
+        <Input
+          type="password"
+          value={password}
+          onChange={(event) => {
+            const { value } = event.target;
+
+            if (value.length < passwordLengths.max) {
+              setPassword(value);
+            }
+          }}
+        />
+      </InputContainer>
+
+      <Flex>
+        <Links>
+          <SmallLink to="#" title="Register">
+            DON'T HAVE AN ACCOUNT?
+          </SmallLink>
+          <SmallLink to="?forget=true" title="Recover">
+            FORGET PASSWORD?
+          </SmallLink>
+        </Links>
+
+        <Access to="/account" title="Login" onClick={() => sendForm()}>
+          <FaLongArrowAltRight />
+        </Access>
+      </Flex>
+
+      {forgetPassword === "true" ? (
         <InputContainer>
-          <Text>
-            Email or<br></br>Phone Number
-          </Text>
+          <Text>Verification Code</Text>
           <Input
-            value={emailOrNumber}
+            type="number"
+            value={code}
             onChange={(event) => {
               const { value } = event.target;
 
-              if (value.length < emailLengths.max) {
-                setEmailOrNumber(value);
+              if (value.length < codeLengths.max) {
+                setCode(value);
               }
             }}
           />
         </InputContainer>
-
-        <InputContainer>
-          <Text>Password</Text>
-          <Input
-            type="password"
-            value={password}
-            onChange={(event) => {
-              const { value } = event.target;
-
-              if (value.length < passwordLengths.max) {
-                setPassword(value);
-              }
-            }}
-          />
-        </InputContainer>
-
-        <Flex>
-          <Links>
-            <SmallLink to="#">DON'T HAVE AN ACCOUNT?</SmallLink>
-            <SmallLink to="?forget=true">FORGET PASSWORD?</SmallLink>
-          </Links>
-
-          <SendButton onClick={() => sendForm()}>
-            <FaLongArrowAltRight />
-          </SendButton>
-        </Flex>
-
-        {forgetPassword === "true" ? (
-          <InputContainer>
-            <Text>Verification Code</Text>
-            <Input
-              type="number"
-              value={code}
-              onChange={(event) => {
-                const { value } = event.target;
-
-                if (value.length < codeLengths.max) {
-                  setCode(value);
-                }
-              }}
-            />
-          </InputContainer>
-        ) : (
-          <></>
-        )}
-      </FormContainer>
-
-      <Credits>Copyright © 2023 Yhago Lopes</Credits>
+      ) : (
+        <></>
+      )}
     </Container>
   );
 };

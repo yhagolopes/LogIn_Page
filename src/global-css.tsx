@@ -1,20 +1,18 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const Back = styled(Link)`
+export const IconLink = styled(Link)`
   position: absolute;
   top: 15px;
   left: 15px;
 
   height: 1em;
+  font-size: 2.5rem;
 
-  font-size: 2rem;
   color: var(--color-w2);
-
   &:hover {
     color: var(--color-w1);
   }
-
   &:active {
     outline: 2px solid var(--color-w2);
   }
@@ -25,7 +23,6 @@ export const Back = styled(Link)`
     &:hover {
       color: var(--color-b1);
     }
-
     &:active {
       outline: 2px solid var(--color-b2);
     }
@@ -100,4 +97,18 @@ export const CenterDiv = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  border-radius: 36px;
+  background: var(--color-b2);
+
+  @media (prefers-color-scheme: light) {
+    background: var(--color-w2);
+  }
+`;
+
+export const MinPage = styled.div`
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
 `;

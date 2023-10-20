@@ -1,15 +1,27 @@
-// Libs
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// Pages
+
+import { FaLongArrowAltLeft } from "react-icons/fa";
+
 import { Login } from "./pages/Login";
+import { Account } from "./pages/Account";
+import { MinPage, Credits, IconLink } from "./global-css";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-      </Routes>
-    </BrowserRouter>
+    <MinPage>
+      <BrowserRouter>
+        <IconLink to="/" title="Go back">
+          <FaLongArrowAltLeft />
+        </IconLink>
+
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/account" element={<Account />} />
+        </Routes>
+      </BrowserRouter>
+
+      <Credits>Copyright © 2023 Yhago Lopes</Credits>
+    </MinPage>
   );
 }
 
