@@ -4,14 +4,18 @@ import { useSearchParams } from "react-router-dom";
 
 import { FaLongArrowAltRight } from "react-icons/fa";
 
-import { CenterDiv, Input, Text, SmallLink, IconLink } from "../global-css";
+import { BaseDiv, Input, Text, SmallLink, IconLink } from "../global-css";
 import { MinMax } from "../global-types";
 
-const Container = styled(CenterDiv)`
+const Container = styled(BaseDiv)`
   width: 25rem;
   min-height: 10rem;
 
   padding: 0 1.8rem;
+
+  @media (max-width: 750px) {
+    width: 90%;
+  }
 `;
 
 const InputContainer = styled.div`

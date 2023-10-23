@@ -11,7 +11,12 @@ export const Image = styled.img<{ $size?: string }>`
 
   border-radius: 50%;
   background: var(--color-b3);
-  border: 2px solid var(--color-w2);
+  outline: 2px solid var(--color-w3);
+
+  @media (prefers-color-scheme: light) {
+    background: var(--color-w3);
+    outline: 2px solid var(--color-b3);
+  }
 `;
 
 export const IconLink = styled(Link)`
@@ -136,12 +141,8 @@ export const TextArea = styled.textarea<Size>`
   }
 `;
 
-export const CenterDiv = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
+export const BaseDiv = styled.div`
+  position: relative;
   border-radius: 36px;
   background: var(--color-b2);
 
@@ -152,7 +153,14 @@ export const CenterDiv = styled.div`
 
 export const MinPage = styled.div`
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   width: 100%;
   min-height: 100vh;
+
+  @media (max-width: 750px) {
+    padding: 6rem 0;
+  }
 `;

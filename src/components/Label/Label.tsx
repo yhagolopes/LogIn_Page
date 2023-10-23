@@ -16,6 +16,14 @@ const Container = styled.div<{ $width: string; $height: string }>`
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 4rem;
+
+  @media (prefers-color-scheme: light) {
+    background: var(--color-w3);
+  }
+
+  @media (max-width: 750px) {
+    width: 100%;
+  }
 `;
 
 const AnimatedText = styled.div`

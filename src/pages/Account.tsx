@@ -5,22 +5,37 @@ import { BsCheckLg } from "react-icons/bs";
 import { IoIosNotifications } from "react-icons/io";
 
 import { Label } from "../components/Label/Label";
-import { CenterDiv, TextArea, IconLink, Image } from "../global-css";
+import { BaseDiv, TextArea, IconLink, Image } from "../global-css";
 import { MinMax } from "../global-types";
 
-const Container = styled(CenterDiv)`
-  min-height: 90%;
+const Container = styled(BaseDiv)`
+  min-height: 90vh;
   width: 50rem;
 
   padding: 1.5rem 4rem;
+
+  @media (max-width: 750px) {
+    width: 90%;
+
+    padding: 2rem 2rem 8rem 2rem;
+  }
 `;
 
 const TopContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   margin-bottom: 2rem;
+
+  @media (max-width: 750px) {
+    justify-content: center;
+
+    & > div {
+      width: 80%;
+    }
+  }
 `;
 
 const MidContainer = styled.div``;
