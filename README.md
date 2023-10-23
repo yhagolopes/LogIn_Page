@@ -12,8 +12,7 @@ All designs on `/designs` has been created on Canva.
 
 - Goal Design:
   ![LogIn Page Design](/designs/login.png)
-
-- Finished on 10/20/2023.
+  Finished on 10/20/2023.
 
 ### Day 2
 
@@ -23,3 +22,9 @@ All designs on `/designs` has been created on Canva.
 
 - Goal Design:
   ![Account Page Design](/designs/account.png)
+  Finished on 10/23/2023
+
+#### Features
+
+- [ ] Add notifications.
+- [ ] Add upload image.

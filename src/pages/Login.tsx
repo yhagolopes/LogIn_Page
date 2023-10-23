@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
 import { CenterDiv, Input, Text, SmallLink, IconLink } from "../global-css";
+import { MinMax } from "../global-types";
 
 const Container = styled(CenterDiv)`
   width: 25rem;
@@ -33,11 +34,6 @@ const Flex = styled.div`
 
   margin: 2rem 0;
 `;
-
-type MinMax = {
-  min: number;
-  max: number;
-};
 
 const emailLengths: MinMax = { min: 10, max: 60 };
 const passwordLengths: MinMax = { min: 8, max: 14 };

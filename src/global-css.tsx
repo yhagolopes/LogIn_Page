@@ -1,6 +1,19 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+import { Size } from "./global-types";
+
+export const Image = styled.img<{ $size?: string }>`
+  --size: ${(props) => (props.$size !== undefined ? props.$size : "12rem")};
+
+  width: var(--size);
+  height: var(--size);
+
+  border-radius: 50%;
+  background: var(--color-b3);
+  border: 2px solid var(--color-w2);
+`;
+
 export const IconLink = styled(Link)`
   position: absolute;
   top: 15px;
@@ -68,13 +81,17 @@ export const Text = styled.span`
   }
 `;
 
-export const Input = styled.input`
+export const SmallText = styled(Text)`
+  font-size: 1.2rem;
+`;
+
+export const Input = styled.input<Size>`
   background: var(--color-b3);
   color: var(--color-w1);
   font-size: 1.2rem;
 
-  width: 100%;
-  height: 4rem;
+  width: ${(props) => (props.$width !== undefined ? props.$width : "100%")};
+  height: ${(props) => (props.$height !== undefined ? props.$height : "4rem")};
   border-radius: 36px;
   padding: 0 0.7rem;
 
@@ -88,6 +105,33 @@ export const Input = styled.input`
 
     &:focus {
       outline: 2px solid var(--color-b3);
+    }
+  }
+`;
+
+export const TextArea = styled.textarea<Size>`
+  background: var(--color-b3);
+  color: var(--color-w1);
+  outline: 2px solid var(--color-w3);
+
+  font-size: 1.2rem;
+  padding: 0.8rem;
+  border-radius: 36px;
+
+  width: ${(props) => (props.$width !== undefined ? props.$width : "100%")};
+  height: ${(props) => (props.$height !== undefined ? props.$height : "4rem")};
+
+  &:focus {
+    outline: 3px solid var(--color-w1);
+  }
+
+  @media (prefers-color-scheme: light) {
+    background: var(--color-w3);
+    color: var(--color-b1);
+    outline: 2px solid var(--color-b3);
+
+    &:focus {
+      outline: 3px solid var(--color-b1);
     }
   }
 `;
