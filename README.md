@@ -26,5 +26,5 @@ All designs on `/designs` has been created on Canva.
 
 #### Features
 
-- [ ] Add notifications.
-- [ ] Add upload image.
+- [x] Add notifications.
+- [x] Add upload image.

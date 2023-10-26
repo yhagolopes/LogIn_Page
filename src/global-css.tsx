@@ -9,6 +9,9 @@ export const Image = styled.img<{ $size?: string }>`
   width: var(--size);
   height: var(--size);
 
+  object-position: center;
+  object-fit: cover;
+
   border-radius: 50%;
   background: var(--color-b3);
   outline: 2px solid var(--color-w3);
@@ -127,7 +130,7 @@ export const TextArea = styled.textarea<Size>`
   height: ${(props) => (props.$height !== undefined ? props.$height : "4rem")};
 
   &:focus {
-    outline: 3px solid var(--color-w1);
+    outline: 2px solid var(--color-w1);
   }
 
   @media (prefers-color-scheme: light) {
