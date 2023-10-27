@@ -42,6 +42,13 @@ const Labels = styled.div`
   }
 `;
 
+const GridLabels = styled.div`
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 0.6fr;
+`;
+
 // Bottom styles
 const Id = styled.span`
   position: absolute;
@@ -138,7 +145,10 @@ export const Account = () => {
           }}
           $height="9rem"
         />
-        <Label text="Email" link="#" />
+        <GridLabels>
+          <Label width="auto" text="Email" link="#" />
+          <Label width="auto" text="Password" link="#" />
+        </GridLabels>
 
         <IconsContainer>
           <EnableNotifications

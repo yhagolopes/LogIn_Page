@@ -90,7 +90,7 @@ export const Login = () => {
 
       <Flex>
         <Links>
-          <SmallLink to="#" title="Register">
+          <SmallLink to="/register" title="Register">
             DON'T HAVE AN ACCOUNT?
           </SmallLink>
           <SmallLink to="?forget=true" title="Recover">
