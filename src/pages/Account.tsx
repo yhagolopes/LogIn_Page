@@ -96,7 +96,7 @@ const Notifications = styled(BaseDiv)`
   border-radius: 20px 20px 0 0;
 `;
 
-const addressSizes: MinMax = { min: 0, max: 200 };
+const addressLengths: MinMax = { min: 0, max: 200 };
 
 export const Account = () => {
   // Can change without verification
@@ -130,7 +130,7 @@ export const Account = () => {
 
           <Labels>
             <Label text="Username" />
-            <Label text="Phone Number" link="#" />
+            <Label text="Phone Number" link="/update/phone" />
           </Labels>
         </TopContainer>
 
@@ -138,7 +138,7 @@ export const Account = () => {
           value={address}
           onChange={(event) => {
             const { value } = event.target;
-            if (value.length < addressSizes.max) {
+            if (value.length < addressLengths.max) {
               setAddress(value);
               setChanged(true);
             }
@@ -146,8 +146,8 @@ export const Account = () => {
           $height="9rem"
         />
         <GridLabels>
-          <Label width="auto" text="Email" link="#" />
-          <Label width="auto" text="Password" link="#" />
+          <Label width="auto" text="Email" />
+          <Label width="auto" text="Password" link="/update/password" />
         </GridLabels>
 
         <IconsContainer>

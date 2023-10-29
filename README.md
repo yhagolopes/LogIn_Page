@@ -25,7 +25,8 @@ All designs on `/designs` has been created on Canva.
 - [x] Add notifications.
 - [x] Add upload image.
 
-# Day 9
+### Day 9
 
 - Goal Design:
   ![Register Page Design](/designs/register.png)
+  Finished on 10/29/2023.

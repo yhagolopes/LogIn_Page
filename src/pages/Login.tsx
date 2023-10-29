@@ -1,11 +1,17 @@
 import styled from "styled-components";
-import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useState, MouseEvent } from "react";
 
 import { FaLongArrowAltRight } from "react-icons/fa";
 
-import { BaseDiv, Input, Text, SmallLink, IconLink } from "../global-css";
-import { MinMax } from "../global-types";
+import {
+  BaseDiv,
+  Input,
+  Text,
+  SmallLink,
+  IconLink,
+  SmallError,
+} from "../global-css";
+import { emailLengths, passwordLengths } from "../global-types";
 
 const Container = styled(BaseDiv)`
   width: 25rem;
@@ -39,19 +45,37 @@ const Flex = styled.div`
   margin: 2rem 0;
 `;
 
-const emailLengths: MinMax = { min: 10, max: 60 };
-const passwordLengths: MinMax = { min: 8, max: 14 };
-const codeLengths: MinMax = { min: 6, max: 6 };
-
 export const Login = () => {
   const [emailOrNumber, setEmailOrNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [code, setCode] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
-  const [URLSearchParams] = useSearchParams();
-  const forgetPassword = URLSearchParams.get("forget") as string;
+  const handleForgetPassword = (event: MouseEvent) => {
+    if (emailOrNumber.length < emailLengths.min) {
+      event.preventDefault();
+      setError("YOU HAVE TO ADD AN EMAIL.");
+    }
+  };
 
-  const sendForm = () => {
+  const handleErrors = (): boolean => {
+    if (emailOrNumber.length < emailLengths.min) {
+      setError("EMAIL TOO SMALL");
+      return false;
+    }
+
+    if (password.length < passwordLengths.min) {
+      setError("PASSWORD TOO SMALL.");
+      return false;
+    }
+
+    return true;
+  };
+
+  const sendForm = (event: MouseEvent) => {
+    if (!handleErrors()) {
+      event.preventDefault();
+    }
+
     // Send informations to server and handle it responses
   };
 
@@ -93,34 +117,17 @@ export const Login = () => {
           <SmallLink to="/register" title="Register">
             DON'T HAVE AN ACCOUNT?
           </SmallLink>
-          <SmallLink to="?forget=true" title="Recover">
+          <SmallLink to="/code" title="Recover" onClick={handleForgetPassword}>
             FORGET PASSWORD?
           </SmallLink>
+
+          <SmallError>{error}</SmallError>
         </Links>
 
-        <Access to="/account" title="Login" onClick={() => sendForm()}>
+        <Access to="/account" title="Login" onClick={sendForm}>
           <FaLongArrowAltRight />
         </Access>
       </Flex>
-
-      {forgetPassword === "true" ? (
-        <InputContainer>
-          <Text>Verification Code</Text>
-          <Input
-            type="number"
-            value={code}
-            onChange={(event) => {
-              const { value } = event.target;
-
-              if (value.length < codeLengths.max) {
-                setCode(value);
-              }
-            }}
-          />
-        </InputContainer>
-      ) : (
-        <></>
-      )}
     </Container>
   );
 };

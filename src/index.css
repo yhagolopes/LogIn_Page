@@ -12,6 +12,8 @@
 
   --color-link: #9ad3ff;
   --color-link2: #33a5fc;
+
+  --color-error: #ff5757;
 }
 
 * {

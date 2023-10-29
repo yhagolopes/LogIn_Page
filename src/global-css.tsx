@@ -50,6 +50,13 @@ export const IconLink = styled(Link)`
   }
 `;
 
+export const SmallError = styled.span`
+  color: var(--color-error);
+  font-siz: 1rem;
+
+  display: inline-block;
+`;
+
 export const SmallLink = styled(Link)`
   margin: 2px 0;
 
@@ -115,6 +122,10 @@ export const Input = styled.input<Size>`
       outline: 2px solid var(--color-b3);
     }
   }
+`;
+
+export const InputContainer = styled.div`
+  margin: 1rem 0;
 `;
 
 export const TextArea = styled.textarea<Size>`
